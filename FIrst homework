@@ -1,0 +1,6 @@
+yum install csh #was already install 
+yum install ksh
+yum install tcsh #was already installed
+yum install zsh
+yum-config-manager --add-repo http://fishshell.com/files/linux/RedHat_RHEL-6/fish.release:2.repo #Couldn't install fish withougt updating the yum repository
+yum install fish
