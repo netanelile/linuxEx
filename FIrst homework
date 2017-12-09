@@ -4,3 +4,82 @@ yum install tcsh #was already installed
 yum install zsh
 yum-config-manager --add-repo http://fishshell.com/files/linux/RedHat_RHEL-6/fish.release:2.repo #Couldn't install fish withougt updating the yum repository
 yum install fish
+
+##Ex5##
+
+man rm
+touch file
+rm -i file
+y
+
+alias rm = 'rm -i'
+touch file
+rm file
+y
+
+alias
+alias city = 'echo Kiryat Shmona'
+set -x
+city
+(print back: +echo Kiryat Shmona
+Kiryat Shmona)
+
+set +x
+unalias city
+
+which cat(/usr/bin/cat)
+which passwd (/usr/bin/passwd)
+
+echo command execute the bash command
+/bin/echo execute the command form its origin location at the os.
+
+echo hello will print echo hello
+echo -n hello will print nothin cuz -n means do not print
+
+echo " A B C"
+
+echo -e "4+4\t=8" ; echo -e "10+14\t=24"
+
+echo -E ?\\
+
+echo -e "one \ntwo\nthree"
+
+##ex6##
+
+echo Hello $USER 
+
+answer=42 
+
+MyLANG=$LANG 
+
+set
+
+declare -x 
+
+ env | more , set| more 
+ 
+ unset answer
+ 
+ var1=1; exportvar2=2 
+ 
+ echo $var2 
+ 
+ var1=Dumb; var2=do ; echo ${var1}le${var2}re
+ 
+ PS1='\t\u@\h \W$ '
+ 
+ both set-u and set-o shows an error message when using nonexisting variables
+ 
+ set +u
+ 
+ echo $(embvar=emb;echo $embvar) ; echo $embvar
+ $embvar does not exist in the current shell
+ 
+ set-x is a debug mode. its show exacly 
+ 
+ echo -n First; echo -n Middle; echo Last
+ 
+ ls -l /usr/bin/passwd
+ 
+ ##ex7##
+ 
