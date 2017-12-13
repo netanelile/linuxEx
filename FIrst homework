@@ -79,8 +79,37 @@ declare -x
  
  echo -n First; echo -n Middle; echo Last
  
- ls -l /usr/bin/passwd
+ls -l $(which passwd)
  
  ##ex7##
  
+echo The answer to the meaning of life, the universe and everything is 42
+
+!!
  
+ history 5
+ 
+ $HISTSIZE
+1000
+
+echo $HISTSIZE 
+HISTSIZE=5000
+
+commands form other open termibal will be written to the history file opun closing them.
+
+ ##ex9##
+ set -C
+ 
+ls /etc >etc.txt ls 
+etc >etc.txt (Doesn't work on overriting) 
+ 
+ set +C 
+ 
+ 
+ ##ex10##
+ 
+ 
+
+
+
+
