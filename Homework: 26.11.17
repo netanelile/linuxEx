@@ -2,15 +2,15 @@
 ########    26.11.2017
 ####################################################################################
 1. create a script that will:
-	a. check that your user is in sudo/wheel group of users.
+    a. check that your user is in sudo/wheel group of users.
     b. check that your home directory is at /home.
     c. that your nick name is set.
 2. create a script that will:
 	a. creates a hidden file named user_info.sh
 	b. puts your details in it: name, lname, ID, DOB, POB.
-	c. make the the file print every time you login.(check about .bashrc file in your home folder.)
+	c. make the the file print every time you login.(check about .bashrc file in your home folder.)##
 3. create script that will:
-	a. use "for" loop to see all the "services" in /etc/systemd/system.
+	a. use "for" loop to see all the "services" in /etc/systemd/system.##
 	b. if there are other types of files (target/wants....etc) put them in file under /tmp folder, in file named "systemd.misc"
 4. create a script that will print triangle using "*" sign.
 5. create a script that will print reverse triangle using "*" sign with "for" loop.
@@ -21,4 +21,179 @@
 
 please read in "linux_fun.pdf" chapters cp 22, 23, 24, 25.
 please also read "shell_scrpting_with_bash.pdf" till page 38.
+
+1. vim script1.sh
+
+#!/bin/bash 
+#: Title       : Home Work
+#: Date        : 30.12.2017 
+#: Author      : "Netanel Sananes" <Netanelile@Gmail.com.com> 
+#: Version     : 1.0 
+#: Description : a. check that your user is in wheel/sudo group of users.
+#                b. check that your home directory is at /home.
+#                c. that your nick name is set.
+#: Options     : None
+
+user=$USER
+grouptest=$('groups')
+
+echo 'The user: '$user ' is now loged in. and belog to the following groups: ' $grouptest
+
+if [ $user == 'wheel' ] || [ $user == 'sudo' ] ; then
+       echo  "The user is in the wheel/sudo group"
+  else
+       echo "The user is not in the wheel/sudo group"
+fi
+
+echo "=========================================="
+
+homedir=$HOME
+
+if echo $homedir | grep "/home"  ; then
+     echo "My home directory is at /home"
+ else
+     echo "My home directory is NOT at /home. is at: " $homedir
+fi
+
+echo "=========================================="
+
+if [ $HOSTNAME != "" ] ; then
+       echo "User nick is set to: " $HOSTNAME
+  else
+       echo "User Nick is not set."
+fi
+
+#EOF
+
+
+chmod +x script.sh
+
+./script.sh
+
+2. vi script2.sh
+
+#!/bin/bash 
+#: Title       : Home Work
+#: Date        : 30.12.2017 
+#: Author      : "Netanel Sananes" <Netanelile@Gmail.com.com> 
+#: Version     : 1.0 
+#: Description : a. Creates a hidden file named user_info.s
+#                b. Puts my detail in it: name, lname, id, pob, pob,
+#                c. Make the the file print every time you login.(check about .bashrc file in your home folder.
+#: Options     : None
+
+touch ".user_info.sh"
+
+echo "Name: Netanel" >> .user_info.sh
+echo "Last Name: Sananes" >> .user_info.sh
+echo "ID: 123456789" >> .user_info.sh
+echo "Date of Birth: 12.12.12" >> .user_info.sh
+echo "Place of Birth: The North!" >> .user_info.sh
+
+echo ".user_info.sh" >> .bashrc
+
+#EOF
+
+chmod +x script2.sh
+
+./script2.sh
+
+3. ##
+
+4. vim triangle.sh
+
+#! /bin/bash
+
+for((i=1;i<=5;i++))
+   do
+     for((k=1;k<=(5-i);k++))
+        do
+          echo -e " \c "
+    done
+for((j=1;j<=i;j++))
+   do
+      echo -e " * \c"
+    done
+        echo -e "\n"
+    done
+
+5. vim reversetriabgle.sh
+
+#!/bin/bash
+
+for((i=5;i>0;i--))
+   do
+     for((j=5-i;j>0;j--))
+        do
+            echo -e "  \c"
+        done
+        for((j=2*i-1;j>0;j--))
+           do
+            echo -e " * \c"
+           done
+        echo -e "\n"
+       done
+
+6. vim diamond.sh
+
+#! /bin/bash
+for((i=0;i<5;i++))
+  do
+    for((k=1;k<=(5-i);k++))
+        do
+          echo -e "  \c"
+    done
+for((j=1;j<=i;j++))
+   do
+      echo -e " * \c"
+    done
+        echo -e "\n"
+    done
+for ((i=5;i>0;i--))
+   do
+     for((j=5-i;j>0;j--))
+        do
+            echo -e "  \c"
+        done
+        for((j=i-1;j>0;j--))
+           do
+            echo -e " * \c"
+           done
+        echo -e "\n"
+       done
+
+7. vim lowdiskspace.sh
+
+#! /bin/bash
+df -H | grep -vE '^Fileystem|tmpfs|cdrom' | awk '{ print $5 " " $1 }' | while read output;
+do
+  echo $output
+  usep=$(echo $output | awk '{ print $1}' | cut -d'%' -f1  )
+  partition=$(echo $output | awk '{ print $2 }' )
+  if [ $usep -ge 90 ]; then
+    echo "Running out of space \"$partition ($usep%)\" on $(hostname) as on $(date)"
+
+  fi
+done
+
+8. vim chestboard.sh
+
+#! /bin/sh
+
+for i in $(seq 1 8)
+do
+        for j in $(seq 1 8)
+        do
+                S=$(((i+j)%2))
+                if [ $S -eq 0 ]
+                then
+                        echo -e -n "\033[47m " # white
+                else
+                        echo -e -n "\033[40m " # black
+                fi
+        done
+        echo -e -n "\033[40m " # black, ensure it exists normally
+        echo "" # new line
+done
+
 
