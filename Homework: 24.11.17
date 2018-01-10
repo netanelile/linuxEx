@@ -4,14 +4,18 @@
 ###################################################################################
 1. create a file  and in it write commands that will run sleep command for 5.5 seconds and will print working directory.
 1.1. run the file with "bash" command --> bash file_with commands_in_it.
-2. copy the previous file and make several changes: change time to 2.8 seconds and after every sleep command create empty file with alfabetical letter.
-for example: file_a, file_b, file_c ....etc,etc.
+2. copy the previous file and make several changes: change time to 2.8 seconds and after every
+    sleep command create empty file with alfabetical letter.
+for example: file_a, file_b, file_c ....etc,etc. ##
 2.1 run the file with "bash" command.
-3.create a file that will hold variable "name" with value of you first name, after that run sleep command for 4 seconds and print it to standard output.
+3.create a file that will hold variable "name" with value of you first name, 
+  after that run sleep command for 4 seconds and print it to standard output.
 3.1 run the file with "bash" command.
-4. copy the file with diffrent name add to it additional variables of : lname, ID, DOB(date of birth), COB(country of birth) and later print them to standard output.
+4. copy the file with diffrent name add to it additional variables of : 
+    lname, ID, DOB(date of birth), COB(country of birth) and later print them to standard output.
 4.1 run the file wiht bash command, but redirect its output  to tmp file in your home folder.
-5. create a file that will run "mkdir" with parenthood to folder that is named after you. after it is created change your location in to it.
+5. create a file that will run "mkdir" with parenthood to folder that is named after you. 
+    after it is created change your location in to it.
 5.1 run the file with bash command.
 5.2 run the file again but this time redirect its output in to tmp file in /tmp directory.
 6. create a file that runs "find" commands and seeks all the files with "tmp" in its name.
@@ -20,7 +24,8 @@ for example: file_a, file_b, file_c ....etc,etc.
 6.3 let me know if you have succeded.
 6.4 try to use locate command to do the same and filter the output with "grep","sed" and "awk" commads.
 6.5 let me know if you have succeded.
-7. create a file that will print all system defined variables and their values (DO NOT USE "set" OR "env" commad --> do them manually).
+7. create a file that will print all system defined variables and their values 
+    (DO NOT USE "set" OR "env" commad --> do them manually).
 7.1 run the file with "bash" command, pipeline it and then with "cut" command get all the 2nd field from output.
 7.2 do the same as 7.1 but use "awk" command instead.
 
@@ -29,3 +34,53 @@ for example: file_a, file_b, file_c ....etc,etc.
 to read in linuxfun.pdf - again if not have done so --> chapters 13,14,15,17,18.
 to read in linuxfun.pdf - chapters 19, 20, 21
 go to "https://vim-adventures.com/" and play until you get bored.
+
+
+1. 
+
+touch file
+
+sleep 5.5
+pwd
+
+1.1
+chmode +x file
+./file
+
+2. 
+
+cp file file2
+
+sleep 2.8
+############??????
+
+2.1 ./file2
+
+3.
+
+vim file3
+
+name="Netanel
+sleep 4
+echo $name
+
+chmod +x file3
+./file3
+
+4.
+
+cp file3 file 4
+
+name="Netanel
+lname="sananes"
+DOB="12.12.12"
+COB="Israel"
+sleep 4
+echo $name
+echo $lname
+echo $DOB
+echo $COB
+
+4.1 
+./file4 >> file4.1
+
