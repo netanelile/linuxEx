@@ -29,3 +29,67 @@ $ on redhat: install groups that are needed for manual compilation.
 
 $ on redhat and on debian: download  python3.6 from python,org and try to compile it on each of them. read README file for additional file.
 
+
+
+! please schedule annual system upgrade.(very bad idea to do in production)
+
+cd /etc/cron.montly
+vim update.bash
+
+!# /bin/bash
+
+apt-get upgrade -y
+
+:wq
+
+cron -e
+
+  * *   1   1   *    /ect/cron.monthly/update.bash
+:wq
+
+! schudle for user on you system to be notified about meeting with boss tomorrow at luch.(your local use linux)
+
+cron -e
+
+  * 12  15  1   * nati-cent  echo "you have a meeting"
+
+! schedule daily meeting team meeting with all team members at 11 am daily.
+
+  * 11 *    *   1-5 nati-cent, user2, user, 3 echo "daily meeting!"
+  
+  
+! schedule the script that you will create in lab 3 to run on reboot.
+cd /etc/cron.dayly
+vim reboot.bash
+
+!# /bin/bash
+
+reboot
+
+:wq
+
+cron -e
+
+  * 22:00   *   *   *    /ect/cron.monthly/reboot.bash
+:wq
+
+! schedule for hello script to run the moment you open the shell on you OS.(create one line with your login)
+vim /etc/motd
+echo "Welcome ${USER}"
+
+! schedule two jobs with at, and verify that they will run.
+at 12:00 tomorrow
+at> reboot
+^D
+<EOT>
+at teratime
+at> echo "Its Tea Time!"
+^D
+<EOT>
+! As root, display the crontab file of your normal user.
+
+crontab -l -u nati-deb
+
+! As the normal user again, remove your crontab file.
+
+crontab -r
