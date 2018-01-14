@@ -1,0 +1,31 @@
+1. Scheduling
+do as an regular user
+! please schedule annual system upgrade.(very bad idea to do in production)
+! schudle for user on you system to be notified about meeting with boss tomorrow at luch.(your local use linux)
+! schedule daily meeting team meeting with all team members at 11 am daily.
+! schedule the script that you will create in lab 3 to run on reboot.
+! schedule for hello script to run the moment you open the shell on you OS.(create one line with your login)
+! schedule two jobs with at, and verify that they will run.
+! As root, display the crontab file of your normal user.
+! As the normal user again, remove your crontab file.
+
+2. Package_management
+!prerequisite :  you need to have Debian (or alike) and Rehat (or alike) based systems.
+# on debian: down load package name wps-office from wps-community.org and install x86_64 version by using dpkg tool.
+# on debian: enable support for multi-architecture on your system.
+# on debian: please list with dpkg tool all the available packages on your system.
+# on debian: using apt, figure out how to install build-essential tools for manual compiling
+# on debian: using dpkg tool list what are the internal parts of build-essential.
+# on debian: perform package information update.
+# on debian: remove and purge all wps files.
+# on debian: install teamviewer on your device.
+
+$ on redhat: download webmin and try to install it by using rpm.
+$ on redhat: try to download wps  for redhat and install x86 on it.
+$ on redhat: by using rpm, list all packages installed on your system.
+$ on redhat: do the same as before by using yum.
+$ on redhat: by using yum list all available package groups for installations
+$ on redhat: install groups that are needed for manual compilation.
+
+$ on redhat and on debian: download  python3.6 from python,org and try to compile it on each of them. read README file for additional file.
+
