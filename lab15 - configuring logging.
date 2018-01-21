@@ -1,0 +1,4 @@
+lab15: configuring logging.
+* configuring rsyslog to write all messages with priority of  crit to be logged to /var/log/critical.
+* configure rsyslog to roate on daily basis.
+* use logger to test that this is working.
