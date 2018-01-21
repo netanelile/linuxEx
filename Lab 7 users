@@ -1,0 +1,75 @@
+lab6: users
+-----------
+* create users: Bruce, Oliver, Clark, Diana, John and Hal.
+* ser their passwords to expire after 60 days.
+* create a group "jla" and make Bruce and Clark its member.
+* set Bruce as group manager of heros and jla.
+* create another group "ejla" and make Oliver and Hal its memebr.
+* also create create group "heroes" and make all of users its participants.
+* user input redirection to set the password for these users to "password".
+* Ensure all these users get a home firectory in /home.
+* Make sure that members of the group "jla" no more then 10 simultanious processes from the shell.
+
+
+lab6: users - Answers
+---------------------
+
+* create users: Bruce, Oliver, Clark, Diana, John and Hal.
+	root@debian:/home/nati-deb# useradd Bruce
+	useradd Oliver
+	seradd Clark
+	useradd Diana
+	useradd John
+	useradd Hal
+
+* ser their passwords to expire after 60 days.
+	chage -d 60 Bruce
+	chage -d 60 Oliver
+	chage -d 60 Clark
+	chage -d 60 Diana
+	chage -d 60 John
+	chage -d 60 Hal
+	
+* create a group "jla" and make Bruce and Clark its member.
+	groupadd jla
+	usermod -a -G jla Bruce
+	usermod -a -G jla Clark
+* set Bruce as group manager of heros and jla.
+	gpasswd -A Bruce jla
+	groupadd heros
+	gpasswd -A Bruce heros
+	
+* create another group "ejla" and make Oliver and Hal its memebr.
+	groupadd ejla
+	usermod -a -G ejla Oliver
+	usermod -a -G ejla Hal
+	
+* also  create group "heroes" and make all of users its participants.
+	groupadd ejla
+	usermod -a -G ejla Bruce
+	usermod -a -G ejla Oliver
+	usermod -a -G ejla Clark
+	usermod -a -G ejla Diana
+	usermod -a -G ejla John
+	usermod -a -G ejla Hal
+	
+* user input redirection to set the password for these users to "password".
+	echo "password" | passwd --stdin Bruce
+	echo "password" | passwd --stdin Oliver
+	echo "password" | passwd --stdin Clark
+	echo "password" | passwd --stdin Diana
+	echo "password" | passwd --stdin John
+	echo "password" | passwd --stdin Hal
+	
+* Ensure all these users get a home firectory in /home.
+	mkhomedir_helper Bruce
+	mkhomedir_helper Oliver
+	mkhomedir_helper Clark
+	mkhomedir_helper Diana
+	mkhomedir_helper John
+	mkhomedir_helper Hal
+	
+* Make sure that members of the group "jla" no more then 10 simultanious processes from the shell.
+	vi /etc/security/limits.conf # Edit To setup user limits
+	#Add the following line:
+	@jla          hard           nproc                10
