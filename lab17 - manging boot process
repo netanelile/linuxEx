@@ -5,3 +5,24 @@ lab17: manging boot process.
 * ensure that next boot will go into text-mode.
 * set ssh-server to start in every possible target mode.
 * ensure that, incase of failure your ssh service will wait 3 seconds.
+
+lab17: manging boot process - Answers
+-------------------------------------
+
+* on a machine with grphical environment installed, reboot.
+	reboot
+
+* from the grub prompt, start test-only target.
+	reboot
+	# Press e when startup	
+	# add /3 at the end of the line start with linux
+* fromm text-only target, boot graphical-target.
+	startx
+* ensure that next boot will go into text-mode.
+	systemctl set-default runlevel3.target
+* set ssh-server to start in every possible target mode.
+	########################
+
+* ensure that, incase of failure your ssh service will wait 3 seconds.
+	
+	##############################
