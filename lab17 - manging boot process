@@ -1,0 +1,7 @@
+lab17: manging boot process.
+* on a machine with grphical environment installed, reboot.
+* from the grub prompt, start test-only target.
+* fromm text-only target, boot graphical-target.
+* ensure that next boot will go into text-mode.
+* set ssh-server to start in every possible target mode.
+* ensure that, incase of failure your ssh service will wait 3 seconds.
