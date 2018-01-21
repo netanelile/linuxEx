@@ -18,11 +18,11 @@ for example: file_a, file_b, file_c ....etc,etc. ##
     after it is created change your location in to it.
 5.1 run the file with bash command.
 5.2 run the file again but this time redirect its output in to tmp file in /tmp directory.
-6. create a file that runs "find" commands and seeks all the files with "tmp" in its name.
+6. create a file that runs "find" commands and seeks all the files with "tmp" in its name. #################### I use locate
 6.1 run the file with "bash" command and redirect its output  to /dev/null
-6.2 try to read the output in /dev/null with less command.
+6.2 try to read the output in /dev/null with less command. ############################
 6.3 let me know if you have succeded.
-6.4 try to use locate command to do the same and filter the output with "grep","sed" and "awk" commads.
+6.4 try to use locate command to do the same and filter the output with "grep","sed" and "awk" commads. ############
 6.5 let me know if you have succeded.
 7. create a file that will print all system defined variables and their values 
     (DO NOT USE "set" OR "env" commad --> do them manually).
@@ -83,4 +83,47 @@ echo $COB
 
 4.1 
 ./file4 >> file4.1
+
+5.
+
+vim script5
+
+mkdir Netanel
+cd Netanel
+mkdir Netanel
+cd Netanel
+
+:qw
+
+5.1
+chmod +x script5
+
+./script5
+
+6. 
+vim script6
+
+locate temp
+
+:wq
+
+6.1
+chmode +x script6
+./script6
+
+
+7. 
+vim script7
+
+declare -p
+
+:wq
+
+7.1
+chmode +x script7
+./script6 | cut -d' ' -f2-
+
+7.2
+./script6 | awk -F '"' '{print $2}'
+
 
