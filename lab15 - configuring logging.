@@ -1,4 +1,26 @@
 lab15: configuring logging.
+---------------------------
 * configuring rsyslog to write all messages with priority of  crit to be logged to /var/log/critical.
 * configure rsyslog to roate on daily basis.
 * use logger to test that this is working.
+
+
+lab15: configuring logging - Answers
+-------------------------------------
+* configuring rsyslog to write all messages with priority of crit to be logged to /var/log/critical.
+	vi /etc/rsyslog.conf
+	# Save all messages with priority of crit to be logged to file 
+	*.crit                                                 /var/log/critical
+	:wq
+	
+* configure rsyslog to roate on daily basis.
+	vi /etc/logrotate.conf
+	#change to daily
+	daily
+	:wq
+	
+* use logger to test that this is working.
+	logger -p crit
+	(Type some lines)
+	cat /var/log/critical 
+	(will displays the lines that were enters to the critical log)
