@@ -23,3 +23,185 @@ A) create a new project in github called: aunt_Mary's_cake_of_permissions:
 please read in linux_fun - chapters: 26 ( yes again), 27-32
 please read in shell_scripting_with_bash : pages 38-72
 sorry for late update.
+
+---------
+|Answers|
+---------
+
+
+1.a.create a script that will scan whole os and will count amount of files that belongs to your user.
+
+vi fileCOuntScript
+
+#! /bin/bash
+
+ls -lR | grep ^- | wc -l
+
+:wq
+
+chmod fileCOuntScript
+
+./fileCOuntScript
+
+1.b add to prvious script validation - only user with your ID can run script all the others should be denied.
+
+#! /bin/bash
+
+user=$USER
+
+if [ $user = "nati-cent" ]
+ then
+    ls -lR | grep ^- | wc -l
+else
+    echo "denied"
+fi
+
+1.c. another feature to add the script: count also all hidden files in whole file system.
+
+#! /bin/bash
+
+user=$USER
+
+if [ $user = "nati-cent" ]
+ then
+    ls -alR | grep ^- | wc -l
+else
+    echo "denied"
+fi
+
+2.a create a script that will run every time you use "chmod commend": the script needs to be invoked as alias.
+true
+#############################################
+I want to create a script that return true value after user type: yes. 
+and then alisas the script with the chmod commad.
+1. not sure how to create a script that return true value. 
+2. not sure how to get the file name that was entered with the chmod commad.
+#################################################################
+
+2.b. script should ask you if you are sure you would like to make these changes/
+2.c. after "chmod" command finishes to run, user should see the summary of what was done: 
+the name of the file that had permissions changed, date of the change and user who changed it. 
+- it also needs to be inserted as an alias.
+(to set an alias edit one of the bashrc files and the source the file.)
+############################################################################# same as above
+
+3.a.create a script that will receive a list of users. name of group  and list of aliases that they need and then will created them.
+
+#!/bin/sh
+
+echo "Enter username and hit Sapece after ech name. Enter to finish "
+
+read -a  input
+     
+echo "Please Enter the group name: " 
+
+read groupname
+
+groupadd $groupname
+
+for i in ${input[@]}
+  do
+     sudo useradd -g $groupname  $i
+  done
+
+
+3.b if the script will be run with other user than root, it should be notified to user 
+and also kept in a log file that should be created in "/tmp" folder under a name of the script with ".log" suffix 
+(for example: script_name.log)
+
+#!/bin/sh
+if [ $URSR = "root" ]; then
+
+echo "Enter username and hit Sapece after ech name. Enter to finish "
+
+read -a  input
+     
+echo "Please Enter the group name: " 
+
+read groupname
+
+groupadd $groupname
+
+for i in ${input[@]}
+  do
+     sudo useradd -g $groupname  $i
+  done
+else
+echo "The user: " $USER "cannot run this script > /tmp/creategroup.log
+
+4. create script that will recieve a list of folder names and with the same single command : 
+it will create those folders and also will give them permissions of 555.
+
+#!/bin/sh
+
+echo "Enter Folders names and hit Sapece after ech name. Enter to finish "
+
+read -a  input
+
+
+for i in ${input[@]}
+  do
+     mkdir  $i
+     chmod 555 $i
+  done
+
+
+5.a create a script that will ask you to which groups you would like to be added
+5.b in case you already are in the group it should be discarded and you need to be notified.
+5.c in case you are not in the group, it should be anounced in green color with black background that 
+you are going to be part of the group.
+5.d amount of groups provided to script should be at least 4.
+5.e !!!!!!!!!!!!!!!!!!!use functions to write this task
+
+
+#! /bin/bash
+
+function intro{
+
+echo "This is all the groups list: "
+
+getent group | cut -d: -f1
+
+echo "you already in the groups: "
+
+groups
+}
+
+function isUserInAgroup(groupname) {
+
+username=$USER
+
+if getent group $groupname | grep &>/dev/null "\b${username}\b"; then
+    echo true
+else
+    echo false
+fi
+}
+
+function addYourselfIntoGroups{
+echo "Add list of group names you would like to be added (atleast 4)"
+read -r groupNames
+
+while  [ $groupname[@] < 4 ]
+ do 
+  echo "there is less then 4 names. please add more"
+        read -r groupNames
+ done
+
+for i in ${groupname[@]}
+  do
+    if [ isUserInAgroup($i) ]; then
+          sudo useradd -g $groupname  $USER
+          echo $(tput setaf 2) "the user " $USER  " will be added to the groups: " $groupname $(tput sgr0)
+     else
+          echo "The user is already in this group"
+     fi
+  done
+
+}
+
+
+intro()
+addYourselfIntoGroups()
+
+
