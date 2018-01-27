@@ -153,6 +153,9 @@ you are going to be part of the group.
 5.d amount of groups provided to script should be at least 4.
 5.e !!!!!!!!!!!!!!!!!!!use functions to write this task
 
+################################
+####### need to be tested#######
+################################
 
 #! /bin/bash
 
