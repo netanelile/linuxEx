@@ -1,0 +1,23 @@
+* find out which version of kernel your computer is using.
+* use man and related resources to find out how to change the hostname of your machine.
+* read the help output for lvcreate and find whcih options must be used.
+
+---------
+|ANSWERS|
+---------
+
+* find out which version of kernel your computer is using.
+
+rpm -q kernel
+
+# also: hostnamectl 
+
+* use man and related resources to find out how to change the hostname of your machine.
+
+sudo sysctl kernel.hostname=nati_hostname
+
+* read the help output for lvcreate and find whcih options must be used.
+
+14.	Create virtual disk opun the volume group: lvcreate VolumeGroupName –L +1G –n LV-small-disk-managment
+#(the +1G is the size. It can be any size possible according to the available place and it can be added my 
+#M – Mega or G Giga or T tera)
