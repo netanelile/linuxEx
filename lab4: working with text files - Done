@@ -1,0 +1,30 @@
+*  use head and tail to display the fifth line of file /etc/passwd.
+*  used sed to display the fifth line of the file /etc/passwd.
+*  use awk in pipe to filter the first column out of the results of the command ps aux.
+*  use grep to show the names of the files in /etc that contain exactly 3 chars
+*  use grep to find all files that contain the string "alex", but make sure that "alexander"
+
+---------
+|Answers|
+---------
+
+*  use head and tail to display the fifth line of file /etc/passwd.
+
+head -5 /etc/passwd | tail -1
+
+*  used sed to display the fifth line of the file /etc/passwd.
+
+sed -n "5p" /etc/passwd
+
+*  use awk in pipe to filter the first column out of the results of the command ps aux.
+
+ps aux | awk {'print$1'}
+
+*  use grep to show the names of the files in /etc that contain exactly 3 chars
+
+ls /etc | grep '^...$'
+
+*  use grep to find all files that contain the string "alex", 
+   but make sure that "alexander" will not appear in the resultsr"
+
+grep '^alex$'
