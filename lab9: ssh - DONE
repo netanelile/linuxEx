@@ -1,0 +1,19 @@
+lab9: ssh
+* on one machine configure the ssh service so that root user us allowed to log in  using password.
+* from the other server, copy the files /etc/hosts to this servers /root directory.
+
+---------
+|ANSWERS|
+---------
+
+* on one machine configure the ssh service so that root user is allowed to log in  using password.
+
+# Go to /etc/ssh/
+vim sshd_config
+# change PassowrdAthentication to yes
+#change ermitRootLogin to yes
+# uncommit the lines if they are commited
+
+* from the other server, copy the files /etc/hosts to this servers /root directory.
+
+scp //etc/hosts 192.168.0.119:/root directory
