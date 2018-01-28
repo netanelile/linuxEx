@@ -1,3 +1,0 @@
-lab8: network configure
-* configure  you internal interface, so it will allow you to connect to other devices/computers.
-* configure ipv6 for internal use only.
