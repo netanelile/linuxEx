@@ -1,0 +1,31 @@
+* create directory structure /tmp/files/pictures, /tmp/files/photos and /tmp/files/videos
+* copy all files that start with letters a,b or c from /etc to /tmp/files.
+* from /tmp/files, move all files that have a name starting with an a or b to /tmp/files/photos, and files with a name starting with "c" to /tmp/files/videos
+* find all files in /etc that have a size smaller than 1000 bytes and copy those to /tmp/files/pictures.
+* in /tmp/files, create sybolic link to /va
+
+
+---------
+|ANSWERS|
+---------
+
+* create directory structure /tmp/files/pictures, /tmp/files/photos and /tmp/files/videos
+
+mkdir -p /tmp/files/pictures; mkdir -p /tmp/files/videos
+
+* copy all files that start with letters a,b or c from /etc to /tmp/files.
+
+cp /etc/[aA]* /tmp/files; cp /etc/[bB]* /tmp/files || cp /etc/[cC]* /tmp/files
+
+* from /tmp/files, move all files that have a name starting with an a or b to /tmp/files/photos, 
+and files with a name starting with "c" to /tmp/files/videos
+
+mv /tmp/files/[aA]* /tmp/files/photos; mv /tmp/files[bB]* /tmp/files/photos; mv /tmp/files/[cC]* /tmp/files/videos
+
+* find all files in /etc that have a size smaller than 1000 bytes and copy those to /tmp/files/pictures.
+
+find /etc -1000c -exec cp {} /tmp/files/pictures \;
+
+* in /tmp/files, create sybolic link to /va
+
+ln -s /va /tmp/files
