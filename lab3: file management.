@@ -1,0 +1,5 @@
+* create directory structure /tmp/files/pictures, /tmp/files/photos and /tmp/files/videos
+* copy all files that start with letters a,b or c from /etc to /tmp/files.
+* from /tmp/files, move all files that have a name starting with an a or b to /tmp/files/photos, and files with a name starting with "c" to /tmp/files/videos
+* find all files in /etc that have a size smaller than 1000 bytes and copy those to /tmp/files/pictures.
+* in /tmp/files, create sybolic link to /va
