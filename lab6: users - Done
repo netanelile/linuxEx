@@ -2,7 +2,6 @@ lab6: users
 * create users: Bruce, Oliver, Clark, Diana, John and Hal.
 * ser their passwords to expire after 60 days.
 * create a group "jla" and make Bruce and Clark its member.
-	usermod -a -G jla Clark
 * set Bruce as group manager of heros and jla.
 * create another group "ejla" and make Oliver and Hal its memebr.
 * also  create group "heroes" and make all of users its participants.	
