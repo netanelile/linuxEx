@@ -17,3 +17,102 @@ vncserver :1 -geometry 800x600 -depth 24
 * use netstat command to verify that port 5901 is active.
 * use ssh port redirecting to redirect port 5901 to port 8081.
 * try to connect to port 8081 using vnc client.
+
+---------
+|ANSWERS|
+---------
+
+* using "ssh-keygen" create a certficate on both of the machines.
+
+ssh-keygen -t rsa
+
+* copy public cert from one machine to other using "ssh-id-copy".
+
+ssh-copy-id -i ~/.ssh/id_rsa_pub nati-deb@192.***.*.*** #(wont add the user and host here cuz its public)
+
+* copy cert from second machine without using "ssh-id-copy"
+
+# at machine 1:
+cd .ssh
+cat id_rsa_pub
+# maualy coppy the key
+# at machine 2:
+vim /.ssh/authorized_keys
+# past there the copied key
+
+* try connecting between machines to verify the connection.
+
+ssh nati-cent@192.***.*.*** 
+
+* creat another certficates without password-less certificate and copy it to all machines.
+
+ssh keygen -t rsa
+second
+ssh-copy-id -i ~/.ssh/second.pub nati-deb@192.***.*.***
+ssh-copy-id -i ~/.ssh/second.pub nati-cent@192.***.*.***
+
+* on machine one, change ssh server port to 32225.
+
+vim ssh_config
+# change Port 22 to 32225
+
+* on machine two, enable root login on machine.
+
+vim sshd_config
+# change PermitRootLogin to yes 
+
+* on machine two,  create a script that prints you details: name, lastname, address, id, credit card number.
+
+vim script
+#! /bin/bash
+
+echo Name     : Netanel
+echo Last Name: Sananes
+echo Address  : Never Land
+echo Id       : 1234567890
+echo Credit   : 0987654321
+
+
+* run the script from machine two, on machine one.
+
+################################################
+
+* copy the script from machine two, to machine one.
+
+scp script 192.168.*.***:/home
+
+
+* enable ssh file transfer protocol (sftp) on both of the machines and test them.
+
+# At the sshd_config file:
+Subsystem sftp /usr/lib/openssh/sftp-server
+
+
+* enable graphics forwarding via machine two.
+
+# At the sshd_config file:
+X11Forwarding yes
+
+* on machine two, install vnc-server(tigervnc-server). 
+  add vnc password by issuing "vncpasswd" command, and then  create vnc instance by running:
+vncserver :1 -geometry 800x600 -depth 24 
+
+apt-get install tightvncserver
+vncpasswd
+#type password and verify it
+
+vncserver :1 -geometry 800x600 -depth 24
+
+* use netstat command to verify that port 5901 is active.
+
+netstat -plnt | grep 5901
+
+* use ssh port redirecting to redirect port 5901 to port 8081.
+##############################
+ssh –L 5901:192.168.*.***:8081
+ssh –L 5901:smtpserver:8081
+
+* try to connect to port 8081 using vnc client.
+
+##################
+
