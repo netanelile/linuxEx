@@ -16,4 +16,4 @@ vim sshd_config
 
 * from the other server, copy the files /etc/hosts to this servers /root directory.
 
-scp //etc/hosts 192.168.0.119:/root directory
+scp //etc/hosts 192.168.*.***:/root directory
