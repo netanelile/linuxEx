@@ -1,0 +1,19 @@
+! verify that you have at least 2 machine with coneection between them.
+* using "ssh-keygen" create a certficate on both of the machines.
+* copy public cert from one machine to other using "ssh-id-copy".
+* copy cert from second machine without using "ssh-id-copy"
+* try connecting between machines to verify the connection.
+* creat another certficates without password-less certificate and copy it to all machines.
+* on machine one, change ssh server port to 32225.
+* on machine two, enable root login on machine.
+* on machine two,  create a script that prints you details: name, lastname, address, id, credit card number.
+* run the script from machine two, on machine one.
+* copy the script from machine two, to machine one.
+* enable ssh file transfer protocol (sftp) on both of the machines and test them.
+* enable graphics forwarding via machine two.
+* on machine two, install vnc-server(tigervnc-server). 
+  add vnc password by issuing "vncpasswd" command, and then  create vnc instance by running:
+vncserver :1 -geometry 800x600 -depth 24 
+* use netstat command to verify that port 5901 is active.
+* use ssh port redirecting to redirect port 5901 to port 8081.
+* try to connect to port 8081 using vnc client.
