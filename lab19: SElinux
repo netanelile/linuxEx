@@ -9,3 +9,47 @@ lab19: SElinux.
 * verify that httpd(apache) is installed.
 * use sepolicy to list  ports used by httpd.
 * allow httpd to run on port 8001 using semange.
+
+---------
+|ANSWERS|
+---------
+
+* on machine one, check that selinux is enabled.
+
+
+
+* move the selinux to enforcing mode.
+
+
+
+* verify to install "settroubleshoot-server".
+
+
+
+* display the selinux policy vialations by using sealert command.( check in file /var/log/audit/audit.log)
+
+
+
+* list all selinux plugins on the machine that are "on".
+
+
+
+* use semanage  to display the boolean variables of selinux and what they do.
+
+
+
+* use semanage to list all the ports that selinux restricts.
+
+
+
+* verify that httpd(apache) is installed.
+
+
+
+* use sepolicy to list  ports used by httpd.
+
+
+
+* allow httpd to run on port 8001 using semange.
+
+
